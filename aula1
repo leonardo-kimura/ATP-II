@@ -1,0 +1,31 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include<ctype.h>
+#include<conio2.h>
+int main(void) {
+	char opcao;
+	do{
+		printf("\n# # # M E N U # # #\n");
+		printf("\n[A] Ler Vetor\n");
+		printf("\n[B] Exibir Vetor");
+		printf("\n[C] Ler Vetor\n");
+		printf("\n[D] Exibir Vetor\n");
+		printf("\n[ESC] Finalizar\n");
+		printf("\nOpcao desejada: ");
+		opcao = getche(); //pega apenas a tecla //getch n�o aparece a letra // getche sim
+		opcao = toupper(opcao);
+		switch(opcao){
+		 	case 'A': printf("\n[A] Ler Vetor\n");
+						break;
+			case 'B': printf("\n[B] Exibir Vetor");
+						break;
+			case 'C': printf("\n[C] Ler Vetor\n");
+						break;
+			case 'D': printf("\n[D] Exibir Vetor\n");
+						break;
+						
+		}
+	}while(opcao != 27); //ESC == 27  ENTER == 13
+	return 0;
+}
