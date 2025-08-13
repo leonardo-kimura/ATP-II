@@ -2,7 +2,7 @@
 #include<stdlib.h>
 #include<string.h>
 #include<ctype.h>
-#include<conio2.h>
+#include<conio2.h> //clrscr()  ou   system("cls")
 
 //--------------------------------------------------------------//
 
@@ -14,6 +14,7 @@ int main(void) {
 	char opcao;
 	int Vetor[TF], TL=0, aux,i, l=0,c=0, mat[TFM][TFM];
 	do{
+	    clrscr();
 		printf("\n# # # M E N U # # #\n");
 		printf("\n[A] Ler Vetor");
 		printf("\n[B] Exibir Vetor");
