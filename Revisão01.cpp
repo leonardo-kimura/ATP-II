@@ -2,10 +2,10 @@
 
 int main()
 {
-	int mat[3][3], i, j, liv=0, ocup=0;
+	int mat[20][15], i, j, liv=0, ocup=0;
 	printf("Preencha para cada poltrona\n1 - Reservado\n0 - Nao reservado\n");
-	for(i=0; i<3; i++){
-		for(j=0; j<3; j++){
+	for(i=0; i<20; i++){
+		for(j=0; j<15; j++){
 			printf("Poltrona[%d][%d]\n",i,j);
 			scanf("%d",&mat[i][j]);
 			if(mat[i][j] == 0)
@@ -20,9 +20,9 @@ int main()
 	printf("------------------------------\n");
 	printf("Mapa de ocupacao das poltronas\n");
 	printf("------------------------------\n");
-	for(i=0; i<3; i++){
+	for(i=0; i<20; i++){
 		printf("\n");
-		for(j=0; j<3; j++){
+		for(j=0; j<15; j++){
 			printf("%d ",mat[i][j]);
 		}
 	}
@@ -38,3 +38,4 @@ int main()
 		printf("Poltrona desocupada\n");
 	return 0;
 }
+
