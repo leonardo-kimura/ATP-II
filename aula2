@@ -1,0 +1,91 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include<ctype.h>
+#include<conio2.h>
+
+//--------------------------------------------------------------//
+
+#define TF 50
+#define TFM 3
+
+ 
+int main(void) {
+	char opcao;
+	int Vetor[TF], TL=0, aux,i, l=0,c=0, mat[TFM][TFM];
+	do{
+		printf("\n# # # M E N U # # #\n");
+		printf("\n[A] Ler Vetor");
+		printf("\n[B] Exibir Vetor");
+		printf("\n[C] Ler Matriz");
+		printf("\n[D] Exibir Matriz");
+		printf("\n[ESC] Finalizar\n");
+		printf("\nOpcao desejada: ");
+		opcao = getche(); //pega apenas a tecla //getch n?o aparece a letra // getche sim
+		opcao = toupper(opcao);
+		
+		switch(opcao){
+		 	case 'A': printf("\n[A] Ler Vetor\n");
+		 	 		  if(TL<TF){
+		 	 		  	 printf("\nVetor[%d]: ",TL);
+		 			     scanf("%d",&aux);
+		 	 		  }
+		 	 		   else{
+		 			   	 printf("Vetor esta cheio!!\n");
+		 			   	 getchar();
+		 	 	      }
+		 			  
+		 			  while(TL<TF && aux!= 0){
+		 			  	
+		 			  	Vetor[TL] = aux;
+		 			  	TL++;
+		 			  	if(TL<TF){
+		 				printf("\nVetor[%d]: ",TL);
+		 			  	scanf("%d",&aux);
+		 			  }
+		 			   else{
+		 			   	 printf("Vetor esta cheio!!\n");
+		 			   	 getchar();
+		 	          	}
+		 			  	
+		 			  }
+//-----------------------------------------------------------------------------------------------
+						break;
+			case 'B': printf("\n[B] Exibir Vetor");
+				  	  if( TL==0)
+				  	   	 printf("\nNao ha Elementos");
+				  	  else
+				  	  	
+				  	  	for(i=0;i<TL;i++)
+				  	  	 printf("\nVetor[%d]: %d",i,Vetor[i]);
+				  	  
+					  getch();	
+						break;
+						
+//-----------------------------------------------------------------------------------------------						
+			case 'C': printf("\n[C] Ler Matriz\n");
+			         
+			          for(l = 0; l < TFM; l++)
+			          	for(c = 0; c < TFM; c++){
+			          	
+						   printf("Matriz[%d][%d]:  ",l,c);	
+			          		scanf("%d",&mat[l][c]);
+			          	 }
+					  getch();	
+						break;
+//-----------------------------------------------------------------------------------------------						
+			case 'D': printf("\n[D] Exibir Matriz\n");
+			
+					for(l = 0; l < TFM; l++){
+				
+					printf("\n ");
+			          	for(c = 0; c < TFM; c++)	
+			          		printf("%d ",mat[l][c]);
+			          			}
+			          getch();
+						break;
+//-----------------------------------------------------------------------------------------------						
+		}
+	}while(opcao != 27); //ESC == 27  ENTER == 13
+	return 0;
+}
