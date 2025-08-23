@@ -1,0 +1,203 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio2.h>
+#include <string.h>
+#include <ctype.h>
+
+#define TF 50
+
+struct TpData
+{
+	int dia, mes, ano;
+};
+
+struct TpPessoa
+{
+	char Nome[25], SexoBio;
+	float Peso, Altura, IMC;
+	TpData DataNasc;
+};
+
+int main(void)
+{ 
+	TpPessoa TabPessoa[TF], RegPessoa;
+	char AuxNome[25],opcao,excluir[TF],consultar[TF];
+	int TLP=0,i,pos,j;
+	
+	do{
+		textbackground(0);
+		clrscr();  //system("cls");
+   		gotoxy(28,4); 
+		textcolor(10);  //BLACK[0]..[15] WHITE
+		textbackground(7); //[0]..[7]
+		printf("# # #  M E N U  # # #");
+   		textbackground(0);
+		textcolor(2);
+		gotoxy(28,6);
+		printf("[A] Cadastrar Pessoas");
+   		gotoxy(28,7);
+		printf("[B] Excluir Pessoas");
+   		gotoxy(28,8);
+		printf("[C] Consultar Pessoas");
+   		gotoxy(28,9);
+		printf("[D] Alterar Pessoas");
+   		gotoxy(28,10);
+		printf("[E] Exibir com interpretacao do IMC");
+		gotoxy(28,11);
+		printf("[F] Ordenar pelo nome");
+		gotoxy(28,12);
+		printf("[ESC] Sair");  		
+		textcolor(15);
+		gotoxy(28,16);
+		printf("Opcao desejada: ");
+   		opcao = toupper(getche());
+   		textcolor(7);
+   		switch(opcao){
+   			case 'A': gotoxy(35,14);
+			   		  textcolor(14);
+			   		  printf("\n### Cadastrar Pessoas ###\n");
+					  printf("Nome[%d]: ",TLP);
+				      fflush(stdin);
+					  gets(AuxNome);
+					  while (TLP<TF && strcmp(AuxNome,"\0")!=0)
+					{
+					strcpy(TabPessoa[TLP].Nome,AuxNome);
+					printf("Peso [kg]: ");
+					scanf("%f",&TabPessoa[TLP].Peso);
+					printf("Altura [m]: ");
+					scanf("%f",&TabPessoa[TLP].Altura);
+					TabPessoa[TLP].IMC = TabPessoa[TLP].Peso /
+						(TabPessoa[TLP].Altura *
+						 TabPessoa[TLP].Altura);
+					printf("Sexo Biologico [M/F]: ");
+					fflush(stdin);
+					scanf("%c",&TabPessoa[TLP].SexoBio);
+					printf("Data de Nascimento [dd mm aaaa]: ");
+					scanf("%d %d %d",&TabPessoa[TLP].DataNasc.dia,
+					&TabPessoa[TLP].DataNasc.mes,
+					&TabPessoa[TLP].DataNasc.ano);
+					TLP++;
+		
+					printf("\nNome[%d]: ",TLP);
+					fflush(stdin);
+					gets(AuxNome);
+					}
+					getch();
+					break;
+			case 'B': gotoxy(35,14);
+			   		  textcolor(14);
+			   		  printf("\n### Excluir Pessoas ###\n"); 
+			   		  printf("Quem voce deseja excluir?\n");
+			   		  fflush(stdin);
+			   		  gets(excluir);
+			   		  pos = 0;
+			   		  while(pos < TLP && strcmp(excluir,TabPessoa[pos].Nome))
+			   		  pos++;
+			   		  if(pos < TLP){
+			   		  	for(i = pos; i < TLP - 1; i++){
+			   		  		TabPessoa[i]=TabPessoa[i+1];
+			   		  		
+			   		  	}
+			   		  		TLP--;
+			   		  		
+			   		  }
+			   		  else
+			   		  {
+			   		  	 textcolor(8);
+			   		  	printf("Essa pessoa nao esta cadastrada\n");
+			   		  }
+			   	      getch();
+			   	      break;
+		
+		
+			case 'C': gotoxy(35,14);
+			   		  textcolor(14);
+			   		  printf("\n### Consultar Pessoas ###\n");
+			   		  printf("Quem voce deseja consultar?\n");
+			   		  fflush(stdin);
+			   		  gets(consultar);
+			   		  pos = 0;
+			   		  while(pos < TLP && strcmp(consultar,TabPessoa[pos].Nome))
+			   		  pos++;
+			   		  if(pos < TLP){
+			   		  	printf("Nome: %s\n Peso: %.2f\nAltura: %.2f\nSexo Biologico: %c\nData Nascimento: %d %d %d",TabPessoa[pos].Nome,
+							 TabPessoa[pos].Peso,
+							 TabPessoa[pos].Altura,
+							 TabPessoa[pos].SexoBio,
+							 TabPessoa[pos].DataNasc);
+			   		  }
+			   		  else
+			   		  {
+			   		  	 textcolor(8);
+			   		  	printf("Essa pessoa nao esta cadastrada\n");
+			   		  }
+			   	      getch();
+			   	      break;
+			case 'D': 
+						
+					pos=0;
+		            while(pos<TLP && stricmp(AuxNome,TabPessoa[pos].Nome)!=0)
+		            pos++;
+		            if(i<TLP){
+		            	
+		            	strcpy(TabPessoa[pos].Nome,AuxNome);
+						printf("Peso [kg]: ");
+						scanf("%f",&TabPessoa[pos].Peso);
+						printf("Altura [m]: ");
+						scanf("%f",&TabPessoa[pos].Altura);
+						TabPessoa[TLP].IMC = TabPessoa[pos].Peso /
+										(TabPessoa[pos].Altura *
+										 TabPessoa[pos].Altura);
+						printf("Sexo Biologico [M/F]: ");
+						fflush(stdin);
+						scanf("%c",&TabPessoa[pos].SexoBio);
+						printf("Data de Nascimento [dd mm aaaa]: ");
+						scanf("%d %d %d",&TabPessoa[pos].DataNasc.dia,
+										 &TabPessoa[pos].DataNasc.mes,
+										 &TabPessoa[pos].DataNasc.ano);
+										 
+										 printf("Pessoa alterada com sucessso");
+						  }				 
+					else
+		 					{
+		 						printf("\nPessoa nao encontrado!\n");
+		 						getch();
+		 					}
+		 		getch();			
+		 		break;
+		 		
+		 		
+		 			case 'E':
+		 			    clrscr();
+		 			    printf("\n### Exibir com interpretacao do IMC###");
+		 			      	
+		 			    break;
+		 		
+		 		
+		 		case 'F':
+		 			    clrscr();
+		 			    printf("\n### Ordenação de pessoas pelo nome###\n");
+		 			    if(TLP == 0)
+		 			    	printf("Nao ha dados");
+		 			    else{
+		 			    		for(i = 0; i< TLP-1; i++) //vai até o penultimo
+		 			    			for(j = i + 1;j < TLP; j++)
+		 			    				if(stricmp(TabPessoa[i].Nome,TabPessoa[j].Nome) > 0){
+		 			    					
+		 			    					RegPessoa = TabPessoa[i];
+		 			    					TabPessoa[i] = TabPessoa[j];
+		 			    					TabPessoa[j] = RegPessoa;
+		 			    				}
+		 			    				textcolor(11);
+		 			    				for(i=0; i<TLP; i++)
+		 			    				printf("%s\n",TabPessoa[i].Nome);
+		 			    				
+		 			    }
+		 			    getch();
+		 			    break;
+		             	      
+	}
+	}while (opcao != 27);
+	
+	return 0;
+}
