@@ -176,11 +176,11 @@ int main(void)
 		 		
 		 		case 'F':
 		 			    clrscr();
-		 			    printf("\n### Ordenação de pessoas pelo nome###\n");
+		 			    printf("\n### OrdenaÃ§Ã£o de pessoas pelo nome###\n");
 		 			    if(TLP == 0)
 		 			    	printf("Nao ha dados");
 		 			    else{
-		 			    		for(i = 0; i< TLP-1; i++) //vai até o penultimo
+		 			    		for(i = 0; i< TLP-1; i++) //vai atÃ© o penultimo
 		 			    			for(j = i + 1;j < TLP; j++)
 		 			    				if(stricmp(TabPessoa[i].Nome,TabPessoa[j].Nome) > 0){
 		 			    					
@@ -201,3 +201,4 @@ int main(void)
 	
 	return 0;
 }
+
